@@ -5,13 +5,26 @@ import Link from "next/link";
 import {useRouter} from "next/navigation";
 import axios from "axios";
 
-const LoginPage = () => {
-  const [user, setUser] = useState({email: "", password: ""});
-  const handleLogin = () => {};
+const SignUp = () => {
+  const [user, setUser] = useState({email: "", password: "", username: ""});
+  const handleSignUp = async () => {};
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
-      <h1 className="text-2xl mb-4">Login</h1>
+      <h1 className="text-2xl mb-4">Signup</h1>
+      <hr />
+      <label htmlFor="username" className="mr-2 mt-2">
+        UserName
+      </label>
+      <input
+        className="p-2 rounded-md text-gray-950"
+        type="text"
+        id="username"
+        placeholder="User Name"
+        value={user.username}
+        onChange={(e) => setUser({...user, username: e.target.value})}
+      />
       <br />
+
       <label htmlFor="email" className="mr-2 mt-2">
         Email
       </label>
@@ -37,14 +50,16 @@ const LoginPage = () => {
         onChange={(e) => setUser({...user, password: e.target.value})}
       />
       <br />
-      <button onClick={handleLogin} className="btn p-2 my-2 rounded-lg border border-gray-300">
-        Login
-      </button>
-      <Link href={"/signup"} className="mt-4 underline">
+
+      <button onClick={handleSignUp} className="btn p-2 my-2 rounded-lg border border-gray-300">
         Sign Up
+      </button>
+
+      <Link href={"/login"} className="mt-4 underline">
+        Login
       </Link>
     </div>
   );
 };
 
-export default LoginPage;
+export default SignUp;
