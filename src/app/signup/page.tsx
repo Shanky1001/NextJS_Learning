@@ -7,7 +7,24 @@ import axios from "axios";
 
 const SignUp = () => {
   const [user, setUser] = useState({email: "", password: "", username: ""});
-  const handleSignUp = async () => {};
+  const [loading,setLoading] = useState(false);
+  const router = useRouter();
+  const handleSignUp = async () => {
+    setLoading(true);
+    await axios.post("/api/users/signup",user)
+    .then((res:any)=>{
+      if(res.data.success){
+        setUser({email: "", password: "", username: ""});
+        setLoading(false);
+        router.push("/login");
+      }else{
+        alert(res.data?.error)
+      }
+    }).catch((err:any) => {
+      alert(err)
+      setLoading(false)
+    })
+  };
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
       <h1 className="text-2xl mb-4">Signup</h1>
@@ -51,8 +68,8 @@ const SignUp = () => {
       />
       <br />
 
-      <button onClick={handleSignUp} className="btn p-2 my-2 rounded-lg border border-gray-300">
-        Sign Up
+      <button disabled={loading} onClick={handleSignUp} className="btn p-2 my-2 rounded-lg border border-gray-300">
+        {loading ? "Please wait" : "Sign Up"}
       </button>
 
       <Link href={"/login"} className="mt-4 underline">
