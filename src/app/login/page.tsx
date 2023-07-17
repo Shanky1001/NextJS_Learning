@@ -60,7 +60,7 @@ const LoginPage = () => {
 				onClick={handleLogin}
 				className="btn p-2 my-2 rounded-lg border border-gray-300"
 			>
-				Login
+				{loading ? "Loading" : "Login"}
 			</button>
 			<Link href={"/signup"} className="mt-4 underline">
 				Sign Up

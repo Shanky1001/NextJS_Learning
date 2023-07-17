@@ -15,7 +15,7 @@ export const POST = async (request: NextRequest) => {
 		if (!user) {
 			return NextResponse.json(
 				{ success: false, message: "User doesn't exits!" },
-				{ status: 400 }
+				{ status: 200 }
 			);
 		}
 		// match password of the user
@@ -23,7 +23,7 @@ export const POST = async (request: NextRequest) => {
 		if (!matchResult) {
 			return NextResponse.json(
 				{ success: false, message: "Invalid Password !!" },
-				{ status: 400 }
+				{ status: 200 }
 			);
 		}
 		// Create token data
