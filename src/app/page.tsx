@@ -17,10 +17,26 @@ export default function Home() {
 					allowFullScreen
 				></iframe>
 			</div>
-      <div className="flex flex-row items-center">
-      <Link href={"/signup"} className="btn bg-black border rounded-lg p-2 text-xl text-white">Go to Signup Page</Link>
-      <Link href={"/login"} className="btn bg-black border rounded-lg px-4 py-2 text-xl text-orange-400">Go to Login Page</Link>
-      </div>
+			<div className="flex flex-row items-center">
+				<Link
+					href={"/signup"}
+					className="btn bg-black border rounded-lg p-2 text-xl text-white"
+				>
+					Go to Signup Page
+				</Link>
+				<Link
+					href={"/login"}
+					className="btn bg-black border rounded-lg px-4 py-2 text-xl text-orange-400"
+				>
+					Go to Login Page
+				</Link>
+				<Link
+					href={"/profile"}
+					className="btn bg-white border rounded-lg px-4 py-2 text-xl text-green-400"
+				>
+					Go to Profile Page
+				</Link>
+			</div>
 		</main>
 	);
 }

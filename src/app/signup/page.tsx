@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
 	const [user, setUser] = useState({ email: "", password: "", username: "" });
@@ -19,11 +20,11 @@ const SignUp = () => {
 					setLoading(false);
 					router.push("/login");
 				} else {
-					alert(res.data?.error);
+					toast.error(res.data?.error);
 				}
 			})
 			.catch((err: any) => {
-				alert(err);
+				toast.error(err);
 				setLoading(false);
 			});
 	};
